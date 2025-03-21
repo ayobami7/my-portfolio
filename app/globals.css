@@ -11,6 +11,7 @@
     /* Colors */
     --color-bg-primary: #0A0C12;
     --color-bg-secondary: #13172B;
+    --color-bg-tertiary: var(--color-teal-700)
     --color-primary: #6C63FF;
     --color-primary-light: #8C84FF;
     --color-text-primary: #FFFFFF;
