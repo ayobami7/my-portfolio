@@ -25,8 +25,11 @@ function Hero() {
   }, [titleNumber, titles]);
 
   return (
-    <div className="w-full h-full bg-primary">
-      <Spotlight/>
+    <div className="w-full h-full">
+      <Spotlight
+        className="-top-40 left-0 md:left-50 md:-top-20"
+        fill="white"
+      />
       <div className="container mx-auto">
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col text-text-primary">
@@ -66,11 +69,8 @@ function Hero() {
             </p>
           </div>
           <div className="flex flex-row gap-3 mt-10">
-            <Button size="lg" className="gap-4" variant="outline">
-              Jump on a call <PhoneCall className="w-4 h-4" />
-            </Button>
-            <Button size="lg" className="gap-4">
-              Sign up here <MoveRight className="w-4 h-4" />
+            <Button size="lg" className="gap-4 md:p-4 md:text-2xl ">
+                Get In Touch <PhoneCall className="w-4 h-4" />
             </Button>
           </div>
         </div>

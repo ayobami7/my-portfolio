@@ -16,6 +16,7 @@
     --color-primary-light: #8C84FF;
     --color-text-primary: #FFFFFF;
     --color-text-secondary: #B8B8B8;
+    --color-text-tertiary: var(--color-teal-700)
     --color-highlight: #FF5BF0;
     --color-border-dark: #1A1F33;
 
