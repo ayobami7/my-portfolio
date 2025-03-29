@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { MoveRight, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Spotlight } from "./ui/Spotlight";
+import Image from "next/image";
 
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -25,12 +26,17 @@ function Hero() {
   }, [titleNumber, titles]);
 
   return (
-    <div className="w-full h-full">
-      <Spotlight
-        className="-top-40 left-0 md:left-50 md:-top-20"
-        fill="white"
+    <div id="home" className="w-full h-full">
+      <Image 
+        src="/bg.png" 
+        alt="bg" 
+        height={100}
+        width={100}
+        className="absolute top-0 left-0 w-full h-screen z-0"
       />
-      <div className="container mx-auto">
+      {/* <div className="absolute inset-0 h-screen bg-black/50 z-0"></div> */}
+      <Spotlight/>
+      <div className="relative container mx-auto z-10">
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col text-text-primary">
             <h1 className="text-5xl md:text-7xl mt-20 max-w-5xl tracking-tighter text-center font-regular">
@@ -69,8 +75,11 @@ function Hero() {
             </p>
           </div>
           <div className="flex flex-row gap-3 mt-10">
-            <Button size="lg" className="gap-4 md:p-4 md:text-2xl ">
+            <Button size="lg"  className="gap-4">
                 Get In Touch <PhoneCall className="w-4 h-4" />
+            </Button>
+            <Button size="lg" variant="secondary" className="gap-4">
+                Download CV <MoveRight className="w-4 h-4" />
             </Button>
           </div>
         </div>
