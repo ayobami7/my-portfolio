@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { MoveRight, PhoneCall } from "lucide-react";
+import { File, MoveRight, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Spotlight } from "./ui/Spotlight";
 import Image from "next/image";
@@ -75,11 +75,15 @@ function Hero() {
             </p>
           </div>
           <div className="flex flex-row gap-3 mt-10">
-            <Button size="lg"  className="gap-4">
+            <Button size="lg"  className="gap-4" asChild>
+              <a href="#contact">
                 Get In Touch <PhoneCall className="w-4 h-4" />
+              </a>
             </Button>
-            <Button size="lg" variant="secondary" className="gap-4">
-                Download CV <MoveRight className="w-4 h-4" />
+            <Button size="lg" variant="secondary" className="gap-4" asChild>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                Download CV <File className="w-4 h-4" />
+              </a>
             </Button>
           </div>
         </div>
