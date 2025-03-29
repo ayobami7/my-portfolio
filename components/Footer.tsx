@@ -17,8 +17,8 @@ const Footer = () => {
         <div className="flex flex-col items-center">
           
           <nav className="mb-8 flex flex-wrap justify-center gap-6">
-            {navItems.map((navLinks)=>(
-              <a href={navLinks.link} className="hover:text-secondary">{navLinks.name}</a>
+            {navItems.map((navLinks, index)=>(
+              <a key={index} href={navLinks.link} className="hover:text-secondary">{navLinks.name}</a>
             ))}
           </nav>
 

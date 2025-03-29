@@ -83,7 +83,7 @@ export const navItems = [
     {
       id: 2,
       title: "Excite Trade",
-      des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
+      des: "Digitize information sharing between stakeholders in agriculture, from farmers to middlemen",
       img1: "/excite-trade.jpeg",
       iconLists: ["/next.svg", "/tail.svg", "/ts.svg"],
       link: "https://excite-trade-1.vercel.app/",

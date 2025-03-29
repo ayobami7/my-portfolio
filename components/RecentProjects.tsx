@@ -29,18 +29,20 @@ const RecentProjects = () => {
 
             {/* Project Details */}
             <div className="flex flex-col space-y-4">
-              <div className="p-2 flex space-x-2">
+              <div className="flex space-x-2">
                   {item.iconLists.map((icon, i) => (
                     <Image key={i} src={icon} alt="tech stack" width={24} height={24} />
                   ))}
               </div>
-              <h2 className="p-2 text-xl font-bold">{item.title}</h2>
-              <p className="p-2 text-text-secondary">{item.des}</p>
-              <Link href={item.link} className='w-48'>
-                <Button variant='ghost' className="py-2 rounded-md flex items-center">
-                  Project Link <MoveUpRight className="ml-2" />
+              <h2 className="text-xl font-bold">{item.title}</h2>
+              <p className="text-text-secondary">{item.des}</p>
+              
+                <Button variant='ghost' className="py-2 rounded-md flex items-center" asChild>
+                  <Link href={item.link} className='w-40'>
+                    Project Link <MoveUpRight className="ml-2" />
+                  </Link>
                 </Button>
-              </Link>
+              
             </div>
           </div>
         ))}
