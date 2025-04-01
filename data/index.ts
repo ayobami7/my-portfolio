@@ -9,7 +9,7 @@ export const navItems = [
   export const gridItems = [
     {
       id: 1,
-      title: "I'm just a chill guy, I wonder how my first impression is",
+      title: "I am an adaptable and approachable software engineer, committed to creating positive first impressions and fostering effective collaborations.",
       description: "",
       className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[30vh]",
       imgClassName: "w-full h-full",
@@ -19,7 +19,7 @@ export const navItems = [
     },
     {
       id: 2,
-      title: "I'm very flexible with time zone communications",
+      title: "I offer flexible communication across various time zones to accommodate global collaborations.",
       description: "",
       className: "lg:col-span-2 md:col-span-3 md:row-span-2",
       imgClassName: "",
@@ -29,7 +29,7 @@ export const navItems = [
     },
     {
       id: 3,
-      title: "My tech stack?",
+      title: "I am dedicated to continually expanding and refining my technical skill set.",
       description: "I constantly try to improve",
       className: "lg:col-span-2 md:col-span-3 md:row-span-2",
       imgClassName: "",
@@ -39,7 +39,7 @@ export const navItems = [
     },
     {
       id: 4,
-      title: "Tech enthusiast with a passion for development.",
+      title: "A technology enthusiast passionate about developing innovative solutions and advancing the field.",
       description: "",
       className: "lg:col-span-2 md:col-span-3 md:row-span-1",
       imgClassName: "",
@@ -50,7 +50,7 @@ export const navItems = [
   
     {
       id: 5,
-      title: "Currently building a JS library for fun",
+      title: "Actively developing a JavaScript library to contribute to the developer community and enhance coding efficiency.",
       description: "",
       className: "md:col-span-3 md:row-span-2",
       imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
@@ -60,7 +60,7 @@ export const navItems = [
     },
     {
       id: 6,
-      title: "Do you want to start a project together?",
+      title: "Interested in collaborating on a project? Let's connect to discuss potential opportunities.",
       description: "",
       className: "lg:col-span-2 md:col-span-3 md:row-span-1",
       imgClassName: "",
@@ -74,7 +74,7 @@ export const navItems = [
     {
       id: 1,
       title: "BrandNest - Branding Snippets Generator",
-      des: "An AI-powered Branding Snippets Generator that creates branding snippets and keywords based on user input. It utilizes Python for backend development and integrates with Groq's AI-based completions. Frontend built with Next.js, TypeScript, and React.",
+      des: "An AI-powered branding snippets generator that creates branding content and keywords based on user input. It utilizes Python for backend development and integrates with Groq's AI-based completions. The frontend is built with Next.js, TypeScript, and React.",
       img1: "/brandnest22.jpeg",
       img2: "/brandnest22.jpeg",
       iconLists: ["/re.svg", "/tail.svg", "/ts.svg","/next.svg"],
@@ -83,7 +83,7 @@ export const navItems = [
     {
       id: 2,
       title: "Excite Trade",
-      des: "Digitize information sharing between stakeholders in agriculture, from farmers to middlemen",
+      des: "A platform designed to digitize information sharing among agricultural stakeholders, facilitating seamless communication from farmers to intermediaries.",
       img1: "/excite-trade.jpeg",
       iconLists: ["/next.svg", "/tail.svg", "/ts.svg"],
       link: "https://excite-trade-1.vercel.app/",

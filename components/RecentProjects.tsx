@@ -10,11 +10,11 @@ const RecentProjects = () => {
     <div id='projects' className="py-16 text-white">
       <h1 className="text-5xl md:text-7xl text-center mb-12 p-10">Projects</h1>
 
-      <div className="max-w-7xl mx-auto space-y-16">
+      <div className="max-w-7xl mx-auto space-y-16 p-5">
         {projects.map((item) => (
           <div
             key={item.id}
-            className="grid md:grid-cols-2 items-center gap-8 p-6 bg-[#1E293B] rounded-2xl shadow-lg hover:shadow-2xl transition"
+            className="grid md:grid-cols-2 items-center gap-8 p-2 bg-[#1E293B] rounded-2xl shadow-lg hover:shadow-2xl transition"
           >
             {/* Image on the left */}
             <div className="relative w-full">
