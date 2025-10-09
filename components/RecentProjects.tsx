@@ -1,53 +1,99 @@
+'use client';
+
 import { projects } from '@/data'
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
-import { Button } from './ui/button'
-import { MoveUpRight } from 'lucide-react'
+import React, { useState } from 'react'
+import { ExternalLink } from 'lucide-react'
 
 const RecentProjects = () => {
+  const [activeFilter, setActiveFilter] = useState('ALL');
+
+  const filteredProjects = activeFilter === 'ALL' 
+    ? projects 
+    : projects.filter(p => p.category === activeFilter);
+
   return (
-    <div id='projects' className="py-16 text-white">
-      <h1 className="text-5xl md:text-7xl text-center mb-12 p-10">Projects</h1>
-
-      <div className="max-w-7xl mx-auto space-y-16 p-5">
-        {projects.map((item) => (
-          <div
-            key={item.id}
-            className="grid md:grid-cols-2 items-center gap-8 p-2 bg-[#1E293B] rounded-2xl shadow-lg hover:shadow-2xl transition"
-          >
-            {/* Image on the left */}
-            <div className="relative w-full">
-              <Image
-                src={item.img1}
-                alt="Project image"
-                width={500}
-                height={300}
-                className="rounded-lg shadow-md"
-              />
-            </div>
-
-            {/* Project Details */}
-            <div className="flex flex-col space-y-4">
-              <div className="flex space-x-2">
-                  {item.iconLists.map((icon, i) => (
-                    <Image key={i} src={icon} alt="tech stack" width={24} height={24} />
-                  ))}
-              </div>
-              <h2 className="text-xl font-bold">{item.title}</h2>
-              <p className="text-text-secondary">{item.des}</p>
-              
-                <Button variant='ghost' className="py-2 rounded-md flex items-center" asChild>
-                  <Link href={item.link} className='w-40'>
-                    Project Link <MoveUpRight className="ml-2" />
-                  </Link>
-                </Button>
-              
-            </div>
+    <section id="projects" className="min-h-screen flex items-center justify-center px-6 py-20">
+        <div className="max-w-5xl w-full">
+          <div className="mb-8">
+            <div className="text-xs text-cyan-700 mb-2">SECTION_04 &gt; PROJECTS</div>
+            <h2 className="text-3xl font-bold text-cyan-400 mb-2">ACTIVE_DEPLOYMENTS</h2>
+            <div className="h-1 w-20 bg-cyan-500"></div>
           </div>
-        ))}
-      </div>
-    </div>
+
+          {/* Filter Buttons */}
+          <div className="flex gap-2 mb-6 flex-wrap">
+            {['ALL', 'AI', 'WEB', 'DEVOPS', 'TOOLS', 'SECURITY'].map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`px-4 py-2 border text-xs transition-all ${
+                  activeFilter === filter
+                    ? 'border-cyan-500 bg-cyan-500/20 text-cyan-400'
+                    : 'border-cyan-900 text-cyan-700 hover:border-cyan-700'
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {filteredProjects.map((project, i) => (
+              <div key={i} className="border border-cyan-900 p-6 hover:border-cyan-500 transition-all group relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <project.icon className="w-full h-full text-cyan-500" />
+                </div>
+
+                <div className="relative z-10">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <div className="text-xs text-cyan-700 mb-1">PROJECT_{String(i + 1).padStart(2, '0')}</div>
+                      <h3 className="text-xl font-bold text-cyan-400 mb-1">{project.title}</h3>
+                      <p className="text-cyan-600 text-xs">{project.subtitle}</p>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs">
+                      <div className={`w-2 h-2 rounded-full ${
+                        project.status === 'OPERATIONAL' ? 'bg-green-500 animate-pulse' :
+                        project.status === 'IN_DEVELOPMENT' ? 'bg-yellow-500 animate-pulse' :
+                        'bg-cyan-500'
+                      }`}></div>
+                      <span className={
+                        project.status === 'OPERATIONAL' ? 'text-green-500' :
+                        project.status === 'IN_DEVELOPMENT' ? 'text-yellow-500' :
+                        'text-cyan-500'
+                      }>{project.status}</span>
+                    </div>
+                  </div>
+
+                  <p className="text-cyan-700 text-sm mb-4 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tech.map((tech, j) => (
+                      <span key={j} className="px-2 py-1 border border-cyan-800 text-xs text-cyan-500">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {project.link !== '#' && (
+                    <a 
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 border border-cyan-700 hover:border-cyan-500 hover:bg-cyan-500/10 transition-all group"
+                    >
+                      <span className="text-xs">VIEW_PROJECT</span>
+                      <ExternalLink className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
   );
 }
 

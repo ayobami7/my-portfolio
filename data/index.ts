@@ -1,9 +1,19 @@
-export const navItems = [
-    { name: "About", link: "#about" },
-    { name: "Projects", link: "#projects" },
-    { name: "Contact", link: "#contact" },
-  ];
+import { Brain, Code, Database, Github, Globe, Linkedin, Mail, Server, Sparkles } from "lucide-react";
+
+
+export const navItems = ["HOME", "ABOUT", "SERVICES", "PROJECTS", "CONTACT"];
   
+
+export const aboutPoints = [
+    'Software engineer passionate about building scalable systems',
+    'System design enthusiast with focus on clean architecture',
+    'Continuous learner exploring AI/ML and distributed systems',
+    'Building projects with passion, commitment, and determination',
+    'Strong advocate for code quality and best practices',
+    'Enjoying the creative process while solving real problems'
+  ];
+
+
   export const gridItems = [
     {
       id: 1,
@@ -70,21 +80,24 @@ export const navItems = [
   
   export const projects = [
     {
-      id: 1,
-      title: "BrandNest - Branding Snippets Generator",
-      des: "An AI-powered branding snippets generator that creates branding content and keywords based on user input. It utilizes Python for backend development and integrates with Groq's AI-based completions. The frontend is built with Next.js, TypeScript, and React.",
-      img1: "/brandnest22.jpeg",
-      img2: "/brandnest22.jpeg",
-      iconLists: ["/re.svg", "/tail.svg", "/ts.svg","/next.svg"],
-      link: "https://brandnest-git-master-ayobami7s-projects.vercel.app/",
+      title: 'BrandNest',
+      subtitle: 'AI Branding Snippets Generator',
+      description: 'An AI-powered branding snippets generator that creates branding content and keywords based on user input. Built with Python, Groq AI, Next.js, TypeScript, and React.',
+      tech: ['PYTHON', 'GROQ_AI', 'NEXT.JS', 'TYPESCRIPT', 'REACT'],
+      link: 'https://brandnest-git-master-ayobami7s-projects.vercel.app/',
+      status: 'OPERATIONAL',
+      category: 'AI',
+      icon: Sparkles
     },
     {
-      id: 2,
-      title: "Excite Trade",
-      des: "A platform designed to digitize information sharing among agricultural stakeholders, facilitating seamless communication from farmers to intermediaries.",
-      img1: "/excite-trade.jpeg",
-      iconLists: ["/next.svg", "/tail.svg", "/ts.svg"],
-      link: "https://excite-trade-1.vercel.app/",
+      title: 'Excite Trade',
+      subtitle: 'Agricultural Platform',
+      description: 'A platform designed to digitize information sharing among agricultural stakeholders, facilitating seamless communication from farmers to intermediaries.',
+      tech: ['NEXT.JS', 'TYPESCRIPT', 'API_INTEGRATION', 'REAL-TIME'],
+      link: 'https://excite-trade-1.vercel.app/',
+      status: 'OPERATIONAL',
+      category: 'WEB',
+      icon: Globe
     },
   ];
   
@@ -97,37 +110,31 @@ export const navItems = [
     }
   ];
   
-  export const companies = [
+  export const services = [
     {
-      id: 1,
-      name: "cloudinary",
-      img: "/cloud.svg",
-      nameImg: "/cloudName.svg",
+      icon: Code,
+      title: 'Web Development',
+      description: 'Full-stack web applications with modern frameworks and best practices',
+      skills: ['React', 'Next.js', 'Node.js', 'TypeScript']
     },
     {
-      id: 2,
-      name: "appwrite",
-      img: "/app.svg",
-      nameImg: "/appName.svg",
+      icon: Brain,
+      title: 'AI/ML Solutions',
+      description: 'Machine learning models and AI-powered applications for business automation',
+      skills: ['Python', 'TensorFlow', 'NLP', 'Computer Vision']
     },
     {
-      id: 3,
-      name: "HOSTINGER",
-      img: "/host.svg",
-      nameImg: "/hostName.svg",
+      icon: Database,
+      title: 'Backend Systems',
+      description: 'Scalable APIs, microservices, and database architecture design',
+      skills: ['FastAPI', 'PostgreSQL', 'Redis', 'Docker']
     },
-    {
-      id: 4,
-      name: "stream",
-      img: "/s.svg",
-      nameImg: "/streamName.svg",
-    },
-    {
-      id: 5,
-      name: "docker.",
-      img: "/dock.svg",
-      nameImg: "/dockerName.svg",
-    },
+    // {
+    //   icon: Server,
+    //   title: 'DevOps & Cloud',
+    //   description: 'CI/CD pipelines, cloud infrastructure, and deployment automation',
+    //   skills: ['AWS', 'Kubernetes', 'Terraform', 'GitHub Actions']
+    // }
   ];
   
   export const workExperience = [
@@ -143,16 +150,23 @@ export const navItems = [
   export const socialMedia = [
     {
       id: 1,
+      icon: Github,
       img: "/git.svg",
-      url: "https://github.com/ayobami7"
+      url: "https://github.com/ayobami7",
+      label: "GitHub"
     },
-    // {
-    //   id: 2,
-    //   img: "/twit.svg",
-    // },
+    {
+      id: 1,
+      icon: Mail,
+      img: "/git.svg",
+      url: "mailto:adeyemoayobami47@gmail.com",
+      label: "Email"
+    },
     {
       id: 3,
+      icon: Linkedin,
       img: "/link.svg",
-      url: "https://www.linkedin.com/in/adeyemoayobamipaul"
+      url: "https://www.linkedin.com/in/adeyemoayobamipaul",
+      label: "LinkedIn"
     },
   ];

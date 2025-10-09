@@ -1,5 +1,6 @@
 'use client';
 
+import { navItems } from '@/data';
 import { Terminal } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 
@@ -35,7 +36,7 @@ const Navbar = () => {
               </span>
             </div>
             <div className="flex gap-6 text-xs">
-              {['HOME', 'ABOUT', 'SERVICES', 'PROJECTS', 'EXPERIENCE', 'CONTACT'].map(section => (
+              {navItems.map(section => (
                 <button
                   key={section}
                   onClick={() => setActiveSection(section.toLowerCase())}
@@ -43,7 +44,9 @@ const Navbar = () => {
                     activeSection === section.toLowerCase() ? 'text-cyan-400' : 'text-cyan-700'
                   }`}
                 >
-                  {section}
+                  <a href={`#${section.toLowerCase()}`} >{section}</a>
+                  
+                  
                 </button>
               ))}
             </div>

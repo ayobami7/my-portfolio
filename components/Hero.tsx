@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useMemo, useState } from "react";
-import { ChevronRight, File, Mail, MoveRight, PhoneCall } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronRight, File, Mail} from "lucide-react";
 
 
 function Hero() {
@@ -65,22 +65,10 @@ function Hero() {
               </a>
               <a href="/resume.pdf"  target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 border border-cyan-700 hover:border-cyan-500 hover:bg-cyan-500/10 transition-all">
                 <File className="w-4 h-4" />
-                <span>Download CV</span>
+                <span>DOWNLOAD CV</span>
               </a>
             </div>
 
-          {/* <div className="flex flex-row gap-3 mt-10">
-            <Button size="lg"  className="gap-4" asChild>
-              <a href="#contact">
-                Get In Touch <PhoneCall className="w-4 h-4" />
-              </a>
-            </Button>
-            <Button size="lg" variant="secondary" className="gap-4" asChild>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                Download CV <File className="w-4 h-4" />
-              </a>
-            </Button>
-          </div> */}
 
         </div>
       </div>
