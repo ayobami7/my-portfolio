@@ -11,6 +11,11 @@ const Navbar = () => {
   const fullText = "AYOBAMI_PAUL.exe";
 
   useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+  
+  useEffect(() => {
     if (typedText.length < fullText.length) {
       const timeout = setTimeout(() => {
         setTypedText(fullText.slice(0, typedText.length + 1));
