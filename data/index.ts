@@ -83,7 +83,7 @@ export const aboutPoints = [
       title: 'BrandNest',
       subtitle: 'AI Branding Snippets Generator',
       description: 'An AI-powered branding snippets generator that creates branding content and keywords based on user input. Built with Python, Groq AI, Next.js, TypeScript, and React.',
-      tech: ['PYTHON', 'GROQ_AI', 'NEXT.JS', 'TYPESCRIPT', 'REACT'],
+      tech: ['PYTHON', 'GROQ_AI', 'NEXT.JS', 'TYPESCRIPT', 'REACT', ],
       link: 'https://brandnest-git-master-ayobami7s-projects.vercel.app/',
       status: 'OPERATIONAL',
       category: 'AI',
@@ -93,10 +93,30 @@ export const aboutPoints = [
       title: 'Excite Trade',
       subtitle: 'Agricultural Platform',
       description: 'A platform designed to digitize information sharing among agricultural stakeholders, facilitating seamless communication from farmers to intermediaries.',
-      tech: ['NEXT.JS', 'TYPESCRIPT', 'API_INTEGRATION', 'REAL-TIME'],
+      tech: ['NEXT.JS', 'TYPESCRIPT', 'TAILWIND_CSS'],
       link: 'https://excite-trade-1.vercel.app/',
       status: 'OPERATIONAL',
       category: 'WEB',
+      icon: Globe
+    },
+    {
+      title: 'Social Distance Monitor',
+      subtitle: 'AI-Powered Safety Solution',
+      description: 'A platform designed to monitor social distancing in real-time using computer vision techniques.',
+      tech: ['PYTHON', 'OPEN-CV', 'FLASK', 'ML', 'YOLOv8'],
+      link: 'https://social-distance-monitor.onrender.com/',
+      status: 'OPERATIONAL',
+      category: 'AI',
+      icon: Globe
+    },
+    {
+      title: 'Digital Wallet',
+      subtitle: 'Simplified Financial Solution',
+      description: 'A platform designed to provide secure and efficient digital wallet services.',
+      tech: ['JAVA', 'SPRINGBOOT', 'DOCKER'],
+      link: 'https://digital-wallet.onrender.com/',
+      status: 'IN_DEVELOPMENT',
+      category: 'AI',
       icon: Globe
     },
   ];
