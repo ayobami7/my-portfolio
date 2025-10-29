@@ -13,9 +13,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Paul's Portfolio",
-  description: "Full stack portfolio",
-};
+  title: "Ayobami Paul Adeyemo - Software Engineer | Frontend & Security",
+  description: "Software engineer specializing in React, Next.js, and security. Built LMS serving 1000+ users, discovered 15 zero-day vulnerabilities. MSc Software Engineering student.",
+  keywords: ['software engineer', 'frontend developer', 'cybersecurity', 'react', 'nextjs'],
+  authors: [{ name: 'Ayobami Paul Adeyemo' }],
+  openGraph: {
+    title: "Ayobami Paul Adeyemo - Software Engineer",
+    description: "Building scalable systems and securing applications",
+    url: 'https://ayobamipaul.com',
+    siteName: 'Ayobami Paul Portfolio',
+    images: ['/og-image.png'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Ayobami Paul - Software Engineer",
+    description: "Frontend engineer & security analyst",
+    images: ['/og-image.png'],
+  }
+}
 
 export default function RootLayout({
   children,
