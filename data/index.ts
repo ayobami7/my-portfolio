@@ -8,9 +8,8 @@ export const aboutPoints = [
     'Software engineer passionate about building scalable systems',
     'System design enthusiast with focus on clean architecture',
     'Continuous learner exploring AI/ML and distributed systems',
-    'Building projects with passion, commitment, and determination',
-    'Strong advocate for code quality and best practices',
-    'Enjoying the creative process while solving real problems'
+    'Building face recognition fairness evaluation tool for MSc thesis',
+    'Currently exploring server-side rendering optimization in Next.js 15',
   ];
 
 
