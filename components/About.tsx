@@ -33,27 +33,26 @@ const About = () => {
             <div className="border border-cyan-900 p-6">
               <h3 className="text-cyan-500 mb-4 flex items-center gap-2">
                 <Code className="w-4 h-4" />
-                TECH_STACK
+                SKILLS
               </h3>
               <div className="space-y-3">
                 {[
-                  { name: 'Python', level: 95 },
-                  { name: 'TypeScript/JavaScript', level: 90 },
-                  { name: 'React/Next.js', level: 88 },
-                  { name: 'AI/ML (TensorFlow)', level: 80 },
-                  { name: 'System Design', level: 85 },
-                  { name: 'Cloud (AWS/GCP)', level: 78 }
+                  { category: 'Languages', skills: ['TypeScript', 'Python', 'Java'] },
+                  { category: 'Frontend', skills: ['React', 'Next.js', 'Tailwind CSS'] },
+                  { category: 'Backend', skills: ['FastAPI', 'Spring Boot', 'PostgreSQL'] },
+                  { category: 'Tools', skills: ['Docker', 'Git', 'React Query', 'Kafka'] },
+                  { category: 'Exploring', skills: ['Rust', 'WebAssembly', 'tRPC'] }
                 ].map((skill, i) => (
                   <div key={i}>
-                    <div className="flex justify-between text-xs mb-1">
-                      <span className="text-cyan-400">{skill.name}</span>
-                      <span className="text-cyan-700">{skill.level}%</span>
-                    </div>
-                    <div className="h-1 bg-cyan-900 relative overflow-hidden">
-                      <div 
-                        className="h-full bg-cyan-500 transition-all duration-1000"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
+                    <div className="flex text-xs mb-1">
+                      <span className="text-cyan-400 w-1/5 align-center">{skill.category}:</span>
+                      <div className="flex flex-wrap gap-2">
+                        {skill.skills.map((s, j) => (
+                          <span key={j} className="px-2 py-1 border border-cyan-800 text-xs text-cyan-600">
+                            {s}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 ))}

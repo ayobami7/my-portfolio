@@ -46,9 +46,8 @@ function Hero() {
                 </span>
               </div>
               <div className="text-cyan-700 text-sm space-y-1">
-                <p>&gt; Developing projects driven by passion and commitment</p>
-                <p>&gt; Building scalable systems and AI-powered solutions</p>
-                <p>&gt; Continuous learning and system design enthusiast</p>
+                <h1>&gt; Building systems that scale, one optimization at a time.</h1>
+                <p>&gt; Software engineer reducing load times and finding vulnerabilities. </p>
               </div>
             </div>
 

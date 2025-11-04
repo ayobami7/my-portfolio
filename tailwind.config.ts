@@ -13,7 +13,7 @@ const config: Config = {
         // Custom colors 
         'bg-primary':   '#0A0C12',  // main dark background
         'bg-secondary': '#13172B',  // slightly lighter dark for cards/sections
-        'primary':      '#6C63FF',  // main purple accent
+        'primary':      '#00BFFF',  // main cyan accent
         'primary-light': '#8C84FF', // lighter purple for hover states
         'text-primary': '#FFFFFF',  // main text color
         'text-secondary': '#B8B8B8',// secondary text color
