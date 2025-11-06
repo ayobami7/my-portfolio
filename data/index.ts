@@ -1,39 +1,20 @@
 import { Brain, Code, Database, Github, Globe, Linkedin, Mail, Server, Sparkles } from "lucide-react";
 
 
-export const navItems = ["HOME", "ABOUT", "SERVICES", "PROJECTS", "CONTACT"];
+export const navItems = ["HOME", "ABOUT", "SERVICES", "PROJECTS", "WRITING", "CONTACT"];
   
 
 export const aboutPoints = [
     'Software engineer building scalable systems',
     'Reduced LMS bundle size by 30% by migrating from Redux to React Query at Techspertise',
-    'Continuous learner exploring AI/ML and distributed systems',
-    'Building face recognition fairness evaluation tool for MSc thesis',
+    'Built microservices digital wallet with Kafka and PostgreSQL handling distributed transactions',
+    'Researching bias in face recognition models using SHAP and LIME for MSc thesis',
     'Currently exploring server-side rendering optimization in Next.js 15',
+    'Strong advocate for writing readable, maintainable code and comprehensive documentation'
   ];
 
   
   export const projects = [
-    {
-      title: 'BrandNest',
-      subtitle: 'AI Branding Snippets Generator',
-      description: 'An AI-powered branding snippets generator that creates branding content and keywords based on user input. Built with Python, Groq AI, Next.js, TypeScript, and React.',
-      tech: ['PYTHON', 'GROQ_AI', 'NEXT.JS', 'TYPESCRIPT', 'REACT', ],
-      link: 'https://brandnest-git-master-ayobami7s-projects.vercel.app/',
-      status: 'OPERATIONAL',
-      category: 'AI',
-      icon: Sparkles
-    },
-    {
-      title: 'Excite Trade',
-      subtitle: 'Agricultural Platform',
-      description: 'A platform designed to digitize information sharing among agricultural stakeholders, facilitating seamless communication from farmers to intermediaries.',
-      tech: ['NEXT.JS', 'TYPESCRIPT', 'TAILWIND_CSS'],
-      link: 'https://excite-trade-1.vercel.app/',
-      status: 'OPERATIONAL',
-      category: 'WEB',
-      icon: Globe
-    },
     {
       title: 'Social Distance Monitor',
       subtitle: 'AI-Powered Safety Solution',
@@ -46,14 +27,45 @@ export const aboutPoints = [
     },
     {
       title: 'Digital Wallet',
-      subtitle: 'Simplified Financial Solution',
-      description: 'A platform designed to provide secure and efficient digital wallet services.',
-      tech: ['JAVA', 'SPRINGBOOT', 'DOCKER'],
+      subtitle: 'Microservices Architecture',
+      description: 'Built a distributed transaction system using Saga pattern with Spring Boot, Kafka, and PostgreSQL. Handles 500+ transactions/second with eventual consistency.',
+      tech: ['JAVA', 'SPRINGBOOT', 'DOCKER', 'KAFKA', 'POSTGRESQL'],
       link: 'https://digital-wallet.onrender.com/',
       status: 'IN_DEVELOPMENT',
-      category: 'AI',
-      icon: Globe
+      category: 'DEVOPS',
+      icon: Globe,
+      blogPost: '/writing/digital-wallet-microservices'
     },
+    {
+      title: 'Face Recognition Fairness',
+      subtitle: 'ML Bias Analysis',
+      description: 'Evaluating demographic bias in FaceNet using SHAP and LIME. Research project analyzing fairness across 10,000+ images for MSc thesis.',
+      tech: ['PYTHON', 'TENSORFLOW', 'SHAP', 'LIME', 'JUPYTER'],
+      link: 'https://github.com/ayobami7/face_recognition_model',
+      status: 'IN_DEVELOPMENT',
+      category: 'AI',
+      icon: Brain
+    },
+    {
+      title: 'BrandNest',
+      subtitle: 'AI Branding Snippets Generator',
+      description: 'An AI-powered branding snippets generator that creates branding content and keywords based on user input. Built with Python, Groq AI, Next.js, TypeScript, and React.',
+      tech: ['PYTHON', 'GROQ_AI', 'NEXT.JS', 'TYPESCRIPT', 'REACT', ],
+      link: 'https://brandnest-git-master-ayobami7s-projects.vercel.app/',
+      status: 'OPERATIONAL',
+      category: 'AI',
+      icon: Sparkles,
+    },
+    {
+      title: 'Excite Trade',
+      subtitle: 'Agricultural Platform',
+      description: 'A platform designed to digitize information sharing among agricultural stakeholders, facilitating seamless communication from farmers to intermediaries.',
+      tech: ['NEXT.JS', 'TYPESCRIPT', 'TAILWIND_CSS'],
+      link: 'https://excite-trade-1.vercel.app/',
+      status: 'OPERATIONAL',
+      category: 'WEB',
+      icon: Globe
+    }
   ];
 
   

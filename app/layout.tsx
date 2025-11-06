@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
+import { Params } from "next/dist/server/request/params";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ayobamipaul.com'),
   title: "Ayobami Paul Adeyemo - Software Engineer | Frontend & Security",
   description: "Software engineer specializing in React, Next.js, and security. Built LMS serving 1000+ users, discovered 15 zero-day vulnerabilities. MSc Software Engineering student.",
   keywords: ['software engineer', 'frontend developer', 'cybersecurity', 'react', 'nextjs'],
@@ -36,8 +38,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params
 }: Readonly<{
   children: React.ReactNode;
+  params: Params;
 }>) {
   return (
     <html lang="en">

@@ -44,9 +44,7 @@ const Navbar = () => {
                     activeSection === section.toLowerCase() ? 'text-cyan-400' : 'text-cyan-700'
                   }`}
                 >
-                  <a href={`#${section.toLowerCase()}`} >{section}</a>
-                  
-                  
+                  <a href={section === 'WRITING' ? '/writing' : `#${section.toLowerCase()}`} >{section}</a>
                 </button>
               ))}
             </div>
