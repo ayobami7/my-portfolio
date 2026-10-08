@@ -7,19 +7,10 @@ import RecentProjects from "@/components/RecentProjects";
 
 export default function Home() {
   return (
-    <main className="w-full bg-black text-text-primary relative flex flex-col overflow-hidden mx-auto">
-      <div>
-        <div className="fixed inset-0 opacity-10 pointer-events-none">
-          <div className="absolute inset-0" style={{
-              backgroundImage: `
-                linear-gradient(cyan 1px, transparent 1px),
-                linear-gradient(90deg, cyan 1px, transparent 1px)
-              `,
-              backgroundSize: '50px 50px',
-          }}></div>
-        </div>
-      
+    <main className="relative mx-auto flex w-full flex-col overflow-hidden bg-ink text-fg">
+      <div className="hud-grid pointer-events-none fixed inset-0" aria-hidden />
 
+      <div className="relative">
         <Navbar/>
         <Hero/>
         <About/>

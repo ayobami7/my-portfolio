@@ -57,6 +57,11 @@ export function getAllPosts(): Post[] {
 }
 
 export function getPostBySlug(slug: string): Post | null {
+  // Only resolve slugs that map to a real post file (no path traversal)
+  if (!getPostSlugs().includes(slug)) {
+    return null
+  }
+
   try {
     const fullPath = path.join(postsDirectory, `${slug}.mdx`)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
@@ -71,7 +76,7 @@ export function getPostBySlug(slug: string): Post | null {
       } as PostMetadata,
       content,
     }
-  } catch (error) {
+  } catch {
     return null
   }
 }

@@ -7,6 +7,9 @@ import remarkGfm from 'remark-gfm'
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  // Bundle next-mdx-remote with Next's own React; loading it as an external
+  // package pulls in a second React copy and crashes post pages in `next dev`
+  transpilePackages: ['next-mdx-remote'],
 };
 
 const withMDX = createMDX({
