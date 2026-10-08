@@ -2,104 +2,59 @@ import type { MDXComponents } from 'mdx/types'
 import Image, { ImageProps } from 'next/image'
 import Link from 'next/link'
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
-  return {
-    h1: ({ children }) => (
-      <h1 className="text-4xl font-bold text-cyan-400 mt-8 mb-4">
-        {children}
-      </h1>
-    ),
-    h2: ({ children }) => (
-      <h2 className="text-3xl font-bold text-cyan-400 mt-8 mb-4 border-b border-cyan-800 pb-2">
-        {children}
-      </h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className="text-2xl font-bold text-cyan-300 mt-6 mb-3">
-        {children}
-      </h3>
-    ),
-    h4: ({ children }) => (
-      <h4 className="text-xl font-bold text-cyan-300 mt-4 mb-2">
-        {children}
-      </h4>
-    ),
-    p: ({ children }) => (
-      <p className="text-cyan-100 leading-relaxed mb-4">
-        {children}
-      </p>
-    ),
-    a: ({ href, children }) => (
-      <Link 
-        href={href as string} 
-        className="text-cyan-400 hover:text-cyan-300 underline transition-colors"
-      >
+export const mdxComponents: MDXComponents = {
+  h1: (props) => <h1 {...props} className="mt-10 mb-4 scroll-mt-20 text-3xl text-fg sm:text-4xl" />,
+  h2: (props) => (
+    <h2 {...props} className="mt-12 mb-4 scroll-mt-20 border-b border-line pb-2 text-xl text-fg before:mr-2 before:text-signal before:content-['#'] sm:text-2xl" />
+  ),
+  h3: (props) => <h3 {...props} className="mt-8 mb-3 scroll-mt-20 text-lg text-fg sm:text-xl" />,
+  h4: (props) => <h4 {...props} className="mt-6 mb-2 scroll-mt-20 text-base text-fg" />,
+  p: (props) => <p {...props} className="mb-5 font-sans text-[15px] leading-7 text-dim sm:text-base" />,
+  a: ({ href = '', children, ...props }) =>
+    href.startsWith('/') || href.startsWith('#') ? (
+      <Link href={href} className="text-signal underline underline-offset-4 hover:text-fg">
         {children}
       </Link>
-    ),
-    ul: ({ children }) => (
-      <ul className="list-disc list-inside text-cyan-100 mb-4 space-y-2 ml-4">
+    ) : (
+      <a {...props} href={href} target="_blank" rel="noopener noreferrer" className="text-signal underline underline-offset-4 hover:text-fg">
         {children}
-      </ul>
+      </a>
     ),
-    ol: ({ children }) => (
-      <ol className="list-decimal list-inside text-cyan-100 mb-4 space-y-2 ml-4">
-        {children}
-      </ol>
-    ),
-    li: ({ children }) => (
-      <li className="text-cyan-100">
-        {children}
-      </li>
-    ),
-    blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-cyan-500 pl-4 italic text-cyan-300 my-4 bg-cyan-900/10 py-2">
-        {children}
-      </blockquote>
-    ),
-    code: ({ children, className }) => {
-      const isInline = !className
-      if (isInline) {
-        return (
-          <code className="bg-cyan-900/30 text-cyan-300 px-2 py-1 rounded text-sm font-mono">
-            {children}
-          </code>
-        )
-      }
-      return (
-        <code className={className}>
-          {children}
-        </code>
-      )
-    },
-    pre: ({ children }) => (
-      <pre className="bg-gray-900 border border-cyan-800 rounded-lg p-4 overflow-x-auto mb-4 text-sm">
-        {children}
-      </pre>
-    ),
-    table: ({ children }) => (
-      <div className="overflow-x-auto mb-4">
-        <table className="min-w-full border border-cyan-800">
-          {children}
-        </table>
-      </div>
-    ),
-    th: ({ children }) => (
-      <th className="bg-cyan-900/30 text-cyan-300 px-4 py-2 text-left border border-cyan-800">
-        {children}
-      </th>
-    ),
-    td: ({ children }) => (
-      <td className="text-cyan-100 px-4 py-2 border border-cyan-800">
-        {children}
-      </td>
-    ),
-    Image: (props: ImageProps) => (
-      <Image 
-        {...props} 
-        className="rounded-lg border border-cyan-800 my-4"
-      />
-    ),
-    ...components,
-  }
+  strong: (props) => <strong {...props} className="font-semibold text-fg" />,
+  em: (props) => <em {...props} className="text-fg" />,
+  hr: () => <hr className="my-10 border-line" />,
+  ul: (props) => <ul {...props} className="mb-5 ml-5 list-[square] space-y-2 font-sans text-[15px] text-dim marker:text-signal sm:text-base" />,
+  ol: (props) => <ol {...props} className="mb-5 ml-5 list-decimal space-y-2 font-sans text-[15px] text-dim marker:text-faint sm:text-base" />,
+  li: (props) => <li {...props} className="pl-1 leading-7 [&>p]:mb-2" />,
+  blockquote: (props) => (
+    <blockquote {...props} className="my-6 border-l-2 border-signal bg-panel px-4 py-3 text-dim [&>p]:mb-0" />
+  ),
+  // Inline code is styled here; code inside <pre> is reset by the pre styles below
+  code: ({ className, ...props }) => (
+    <code {...props} className={`${className ?? ''} border border-line bg-panel-raised px-1.5 py-0.5 font-mono text-[0.85em] text-fg`} />
+  ),
+  pre: (props) => (
+    <pre
+      {...props}
+      className="mb-6 overflow-x-auto border border-line bg-panel p-4 text-xs leading-relaxed sm:text-sm [&>code]:border-0 [&>code]:bg-transparent [&>code]:p-0 [&>code]:text-[1em]"
+    />
+  ),
+  table: (props) => (
+    <div className="mb-6 overflow-x-auto border border-line">
+      <table {...props} className="w-full border-collapse text-left text-sm" />
+    </div>
+  ),
+  th: (props) => <th {...props} className="border-b border-line bg-panel-raised px-4 py-2 font-normal text-fg" />,
+  td: (props) => <td {...props} className="border-b border-line px-4 py-2 text-dim" />,
+  img: ({ alt, ...props }) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img {...props} alt={alt ?? ''} className="my-6 h-auto max-w-full border border-line" />
+  ),
+  Image: (props: ImageProps) => (
+    <Image {...props} className="my-6 h-auto max-w-full border border-line" />
+  ),
+}
+
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return { ...mdxComponents, ...components }
 }

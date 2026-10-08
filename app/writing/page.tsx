@@ -1,6 +1,10 @@
 import Link from 'next/link'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { getAllPosts } from '@/lib/blog'
-import { Calendar, Clock } from 'lucide-react'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import PostMeta from '@/components/PostMeta'
+import { Brackets, SectionHeader } from '@/components/ui/hud'
 
 export const metadata = {
   title: 'Technical Writing | Ayobami Paul Adeyemo',
@@ -11,88 +15,54 @@ export default function WritingPage() {
   const posts = getAllPosts()
 
   return (
-    <main className="min-h-screen bg-black text-text-primary">
-      <div className="max-w-4xl mx-auto px-6 py-20">
-        {/* Header */}
-        <div className="mb-12">
-          <div className="text-xs text-cyan-700 mb-2">SECTION &gt; WRITING</div>
-          <h1 className="text-4xl font-bold text-cyan-400 mb-4">
-            TECHNICAL_WRITING
-          </h1>
-          <div className="h-1 w-20 bg-cyan-500 mb-4"></div>
-          <p className="text-cyan-300 text-lg">
-            Thoughts on software engineering, architecture decisions, and lessons learned building systems.
-          </p>
-        </div>
+    <main className="relative min-h-screen bg-ink text-fg">
+      <div className="hud-grid pointer-events-none fixed inset-0" aria-hidden />
+      <Navbar />
 
-        {/* Posts List */}
+      <div className="relative mx-auto max-w-4xl px-4 pt-28 pb-20 sm:px-6">
+        <SectionHeader
+          index="SECTION > WRITING"
+          title="Technical Writing"
+          count={posts.length}
+          subtitle="Thoughts on software engineering, architecture decisions, and lessons learned building systems."
+        />
+
         {posts.length === 0 ? (
-          <div className="border border-cyan-800 p-8 text-center">
-            <p className="text-cyan-400">No posts yet. Check back soon!</p>
+          <div className="border border-dashed border-line p-10 text-center text-sm text-faint">
+            &gt; No posts yet. Check back soon!
           </div>
         ) : (
-          <div className="space-y-6">
-            {posts.map((post) => (
+          <div className="space-y-4">
+            {posts.map((post, i) => (
               <Link
                 key={post.slug}
                 href={`/writing/${post.slug}`}
-                className="block border border-cyan-900 p-6 hover:border-cyan-500 transition-all group"
+                className="group relative block border border-line bg-panel/80 p-4 transition-colors hover:border-line-strong sm:p-6"
               >
-                <div className="flex items-start justify-between mb-3">
-                  <h2 className="text-2xl font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors">
-                    {post.metadata.title}
-                  </h2>
-                </div>
-
-                <p className="text-cyan-100 mb-4 leading-relaxed">
-                  {post.metadata.description}
+                <Brackets className="opacity-0 transition-opacity group-hover:opacity-100" />
+                <p className="mb-2 text-[11px] text-faint">
+                  Log Entry: <span className="text-fg">{String(posts.length - i).padStart(3, '0')}</span>
                 </p>
-
-                <div className="flex items-center gap-6 text-sm text-cyan-600">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    <time dateTime={post.metadata.date}>
-                      {new Date(post.metadata.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </time>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4" />
-                    <span>{post.metadata.readingTime}</span>
-                  </div>
-                </div>
-
-                {post.metadata.tags && post.metadata.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {post.metadata.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 border border-cyan-800 text-xs text-cyan-500"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
+                <h2 className="mb-3 text-lg leading-snug text-fg transition-colors group-hover:text-signal sm:text-xl">
+                  {post.metadata.title}
+                </h2>
+                <p className="mb-4 font-sans text-sm leading-relaxed text-dim">{post.metadata.description}</p>
+                <PostMeta metadata={post.metadata} />
+                <span className="mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-wide text-dim group-hover:text-fg">
+                  Read entry <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                </span>
               </Link>
             ))}
           </div>
         )}
 
-        {/* Back Link */}
-        <div className="mt-12">
-          <Link
-            href="/"
-            className="text-cyan-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-2"
-          >
-            <span>&lt;</span>
-            <span>BACK_TO_HOME</span>
-          </Link>
-        </div>
+        <Link href="/" className="mt-12 inline-flex items-center gap-2 text-xs uppercase tracking-wide text-dim hover:text-fg">
+          <ArrowLeft className="h-3.5 w-3.5" />
+          BACK_TO_HOME
+        </Link>
       </div>
+
+      <Footer />
     </main>
   )
 }

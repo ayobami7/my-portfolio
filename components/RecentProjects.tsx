@@ -2,98 +2,118 @@
 
 import { projects } from '@/data'
 import React, { useState } from 'react'
-import { ExternalLink } from 'lucide-react'
+import Link from 'next/link'
+import { ExternalLink, FileText } from 'lucide-react'
+import { HudLink, SectionHeader, Tag } from '@/components/ui/hud'
+
+const filters = ['ALL', 'AI', 'WEB', 'DEVOPS', 'TOOLS', 'SECURITY'];
+
+const statusStyles: Record<string, { dot: string; text: string }> = {
+  OPERATIONAL: { dot: 'bg-ok animate-pulse', text: 'text-ok' },
+  IN_DEVELOPMENT: { dot: 'bg-signal animate-pulse', text: 'text-signal' },
+};
 
 const RecentProjects = () => {
   const [activeFilter, setActiveFilter] = useState('ALL');
 
-  const filteredProjects = activeFilter === 'ALL' 
-    ? projects 
+  const filteredProjects = activeFilter === 'ALL'
+    ? projects
     : projects.filter(p => p.category === activeFilter);
 
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center px-6 py-20">
-        <div className="max-w-5xl w-full">
-          <div className="mb-8">
-            <div className="text-xs text-cyan-700 mb-2">SECTION_04 &gt; PROJECTS</div>
-            <h2 className="text-3xl font-bold text-cyan-400 mb-2">ACTIVE_DEPLOYMENTS</h2>
-            <div className="h-1 w-20 bg-cyan-500"></div>
-          </div>
+    <section id="projects" className="flex items-center justify-center px-4 py-16 sm:px-6 sm:py-24">
+      <div className="w-full max-w-6xl">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeader
+            index="SECTION_04 > PROJECTS"
+            title="Active Deployments"
+            count={projects.length}
+            subtitle="Things I've built and shipped"
+          />
 
-          {/* Filter Buttons */}
-          <div className="flex gap-2 mb-6 flex-wrap">
-            {['ALL', 'AI', 'WEB', 'DEVOPS', 'TOOLS', 'SECURITY'].map((filter) => (
+          {/* Filter tabs */}
+          <div className="-mx-4 mb-6 flex gap-1 overflow-x-auto px-4 pb-1 sm:mx-0 sm:mb-8 sm:flex-wrap sm:justify-end sm:px-0">
+            {filters.map((filter) => (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-4 py-2 border text-xs transition-all ${
+                className={`shrink-0 border px-3 py-1.5 text-[11px] transition-colors ${
                   activeFilter === filter
-                    ? 'border-cyan-500 bg-cyan-500/20 text-cyan-400'
-                    : 'border-cyan-900 text-cyan-700 hover:border-cyan-700'
+                    ? 'border-signal bg-signal-soft text-fg'
+                    : 'border-line text-faint hover:border-line-strong hover:text-dim'
                 }`}
               >
                 {filter}
               </button>
             ))}
           </div>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {filteredProjects.map((project, i) => (
-              <div key={i} className="border border-cyan-900 p-6 hover:border-cyan-500 transition-all group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity">
-                  <project.icon className="w-full h-full text-cyan-500" />
-                </div>
+        {filteredProjects.length === 0 ? (
+          <div className="border border-dashed border-line p-10 text-center text-sm text-faint">
+            &gt; No deployments in this category yet.
+          </div>
+        ) : (
+          <div className="grid gap-4 md:grid-cols-2">
+            {filteredProjects.map((project) => {
+              const status = statusStyles[project.status] ?? { dot: 'bg-dim', text: 'text-dim' };
+              const index = projects.indexOf(project) + 1;
+              return (
+                <article
+                  key={project.title}
+                  className="group relative flex flex-col border border-line bg-panel/80 p-4 transition-colors hover:border-line-strong sm:p-5"
+                >
+                  <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-[11px]">
+                    <span className="text-faint">
+                      Mission Code: <span className="text-fg">PRJ_{String(index).padStart(2, '0')}</span>
+                      <span className="ml-2 text-faint">/ {project.category}</span>
+                    </span>
+                    <span className={`flex items-center gap-2 ${status.text}`}>
+                      <span className={`h-1.5 w-1.5 rounded-full ${status.dot}`} />
+                      {project.status}
+                    </span>
+                  </div>
 
-                <div className="relative z-10">
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="mb-3 flex items-start gap-3">
+                    <project.icon className="mt-1 h-5 w-5 shrink-0 text-faint transition-colors group-hover:text-signal" />
                     <div>
-                      <div className="text-xs text-cyan-700 mb-1">PROJECT_{String(i + 1).padStart(2, '0')}</div>
-                      <h3 className="text-xl font-bold text-cyan-400 mb-1">{project.title}</h3>
-                      <p className="text-cyan-600 text-xs">{project.subtitle}</p>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs">
-                      <div className={`w-2 h-2 rounded-full ${
-                        project.status === 'OPERATIONAL' ? 'bg-green-500 animate-pulse' :
-                        project.status === 'IN_DEVELOPMENT' ? 'bg-yellow-500 animate-pulse' :
-                        'bg-cyan-500'
-                      }`}></div>
-                      <span className={
-                        project.status === 'OPERATIONAL' ? 'text-green-500' :
-                        project.status === 'IN_DEVELOPMENT' ? 'text-yellow-500' :
-                        'text-cyan-500'
-                      }>{project.status}</span>
+                      <h3 className="text-lg text-fg">{project.title}</h3>
+                      <p className="text-xs text-faint">{project.subtitle}</p>
                     </div>
                   </div>
 
-                  <p className="text-cyan-700 text-sm mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
+                  <p className="mb-4 text-sm leading-relaxed text-dim">{project.description}</p>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech, j) => (
-                      <span key={j} className="px-2 py-1 border border-cyan-800 text-xs text-cyan-500">
-                        {tech}
-                      </span>
+                  <div className="mb-5 flex flex-wrap gap-2">
+                    {project.tech.map((tech) => (
+                      <Tag key={tech}>{tech}</Tag>
                     ))}
                   </div>
 
-                  {project.link !== '#' && (
-                    <a 
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 border border-cyan-700 hover:border-cyan-500 hover:bg-cyan-500/10 transition-all group"
-                    >
-                      <span className="text-xs">VIEW_PROJECT</span>
-                      <ExternalLink className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
+                  <div className="mt-auto flex flex-wrap gap-2">
+                    {project.blogPost && (
+                      <Link
+                        href={project.blogPost}
+                        className="hud-chip inline-flex items-center gap-2 border border-line-strong bg-panel-raised px-4 py-2.5 text-xs uppercase tracking-wide text-dim transition-colors hover:border-fg hover:text-fg"
+                      >
+                        <FileText className="h-3.5 w-3.5" />
+                        Write-up
+                      </Link>
+                    )}
+                    {project.link !== '#' && (
+                      <HudLink href={project.link} target="_blank" rel="noopener noreferrer" className="group/link">
+                        <span>View Project »</span>
+                        <ExternalLink className="h-3 w-3 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                      </HudLink>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
           </div>
-        </div>
-      </section>
+        )}
+      </div>
+    </section>
   );
 }
 
